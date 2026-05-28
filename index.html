@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopEasy - Ecommerce Website</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f5f5f5;
+    }
+
+    /* Navbar */
+
+    .navbar{
+      background:white;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+      padding:15px 0;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:bold;
+      color:#2874f0;
+    }
+
+    .nav-link{
+      color:black !important;
+      font-weight:500;
+      margin-left:15px;
+    }
+
+    .nav-link:hover{
+      color:#2874f0 !important;
+    }
+
+    /* Hero Section */
+
+    .hero{
+      width:100%;
+      height:500px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.5);
+    }
+
+    .hero-content{
+      position: absolute;
+      z-index:1;
+      color:white;
+      text-align:center;
+    }
+
+    .hero-content h1{
+      font-size:60px;
+      font-weight:bold;
+    }
+
+    .hero-content p{
+      font-size:22px;
+      margin-top:10px;
+    }
+
+    .hero-btn{
+      margin-top:20px;
+      padding:12px 35px;
+      border:none;
+      background:#2874f0;
+      color:white;
+      border-radius:30px;
+      font-size:18px;
+    }
+
+    /* Products */
+
+    .section-title{
+      text-align:center;
+      margin:60px 0 30px;
+      font-size:40px;
+      font-weight:bold;
+      color:#222;
+    }
+
+    .product-card{
+      background:white;
+      border-radius:15px;
+      overflow:hidden;
+      transition:0.3s;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .product-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .product-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .product-content{
+      padding:20px;
+      text-align:center;
+    }
+
+    .price{
+      color:#2874f0;
+      font-size:22px;
+      font-weight:bold;
+    }
+
+    .buy-btn{
+      background:#2874f0;
+      color:white;
+      border:none;
+      padding:10px 25px;
+      border-radius:30px;
+    }
+
+    /* Services */
+
+    .service-box{
+      background:white;
+      padding:30px;
+      border-radius:15px;
+      text-align:center;
+      transition:0.3s;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .service-box:hover{
+      background:#2874f0;
+      color:white;
+      transform:translateY(-10px);
+    }
+
+    .service-box i{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    /* About */
+
+    .about{
+      background:white;
+      padding:80px 0;
+      margin-top:60px;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+    }
+
+    .about-text h2{
+      font-size:45px;
+      font-weight: bold;
+      margin-left: 50px;
+    }
+
+    .about-text p, .hero-btn{
+      margin-left: 50px;
+    }
+
+    /* Contact */
+
+    .contact{
+      padding:80px 0;
+    }
+
+    iframe{
+      width:100%;
+      height:390px;
+      border:none;
+      border-radius:20px;
+    }
+
+    .contact-form{
+      background:white;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .hero-btn{
+      margin-left: 0;
+    }
+
+    
+    /* Footer */
+
+    footer{
+      background:#111;
+      color:white;
+      padding:60px 0 20px;
+      margin-top:50px;
+    }
+
+    .footer-logo{
+      font-size:35px;
+      font-weight:bold;
+      color:#2874f0;
+    }
+
+    .footer-links a{
+      display:block;
+      color:#ccc;
+      text-decoration:none;
+      margin-bottom:10px;
+    }
+
+    .footer-links a:hover{
+      color:white;
+    }
+
+    .social-icons a{
+      color:white;
+      margin-right:15px;
+      font-size:22px;
+    }
+
+    .copyright{
+      text-align:center;
+      margin-top:30px;
+      border-top:1px solid #333;
+      padding-top:20px;
+      color:#aaa;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+
+    <a class="navbar-brand logo" href="#">
+      <i class="fa-solid fa-cart-shopping"></i> ShopEasy
+    </a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Services</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Hero Section -->
+
+<section class="hero">
+ <video autoplay muted loop class="video-bg">
+        <source src="./videos/packaging.mp4" type="video/mp4">
+    </video>
+  <div class="hero-content">
+    <h1>Big box packing Sale</h1>
+    <p>Best Deals On Fast Food Electronics, Fashion & More</p>
+    <button class="hero-btn">Shop Now</button>
+  </div>
+
+</section>
+
+<!-- Products -->
+
+<div class="container">
+
+  <h2 class="section-title">Our Products</h2>
+
+  <div class="row g-4">
+
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="./images/pizza.jpg" alt=""/>
+        <div class="product-content">
+          <h4>Pizza Box</h4>
+          <p class="price">₹400</p>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="./images/burger.jpg" />
+        <div class="product-content">
+          <h4>Burger Box</h4>
+          <p class="price">₹300</p>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="./images/noodles.jpg" alt="">
+        <div class="product-content">
+          <h4>Noodle Box</h4>
+          <p class="price">₹250</p>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="product-card">
+        <img src="./images/cake & pastries.jpg" alt="">
+        <div class="product-content">
+          <h4>Cake & Pastries Box</h4>
+          <p class="price">₹350</p>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Services -->
+
+<section id="services" class="container">
+
+  <h2 class="section-title">Our Services</h2>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="service-box">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h4>Fast Delivery</h4>
+        <p>Quick and secure delivery service all over India.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="service-box">
+        <i class="fa-solid fa-credit-card"></i>
+        <h4>Secure Payment</h4>
+        <p>100% safe online payment gateway support.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="service-box">
+        <i class="fa-solid fa-headset"></i>
+        <h4>24/7 Support</h4>
+        <p>Customer support available anytime for help.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- About -->
+
+<section class="about" id="about">
+
+  <div class="container">
+
+    <div class="row align-items-center">
+
+      <div class="col-md-6">
+        <img src="./images/fast food.jpg" alt="">
+      </div>
+
+      <div class="col-md-6 about-text">
+        <h2>About Us</h2>
+        <p>
+          ShopEasy is a modern box packaging website where you can buy pizza,
+          burger, cake & pastries home appliances and many more at affordable prices.
+          We provide high quality products with fast delivery and secure payment.
+        </p>
+
+        <!-- <button class="hero-btn">Read More</button> -->
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Contact -->
+
+<section id="contact" class="contact">
+
+  <div class="container">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-6">
+
+        <div class="contact-form">
+
+          <input type="text" class="form-control mb-3" placeholder="Your Name">
+
+          <input type="email" class="form-control mb-3" placeholder="Your Email">
+
+          <textarea class="form-control mb-3" rows="5" placeholder="Your Message"></textarea>
+
+          <button class="hero-btn">Send Message</button>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.48177680507!2d77.06889947359373!3d28.52728034376253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d194f1cda4d9d%3A0x24d1d3c3d7d2f4f0!2sNew%20Delhi!5e0!3m2!1sen!2sin!4v1711807456583!5m2!1sen!2sin"></iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="footer-logo">
+          <i class="fa-solid fa-cart-shopping"></i> ShopEasy
+        </div>
+
+        <p class="mt-3">
+          India's best Box packaging website for burger, pizza box and Cake box packing.
+        </p>
+      </div>
+
+      <div class="col-md-4 footer-links">
+        <h4>Quick Links</h4>
+
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Follow Us</h4>
+
+        <div class="social-icons mt-3">
+
+          <a href="#"><i class="fab fa-facebook"></i></a>
+
+          <a href="#"><i class="fab fa-instagram"></i></a>
+
+          <a href="#"><i class="fab fa-twitter"></i></a>
+
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2025 ShopEasy. All Rights Reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+```
